@@ -1,0 +1,108 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXFileReference section */
+		591CB40F298CA7F90004B3F8 /* signIn.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = signIn.html; sourceTree = "<group>"; };
+		59BED580299F19F6003F4488 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		59D03E902995E7DC005878DD /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		59D225B42980CC3A00842421 /* newUser.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = newUser.html; sourceTree = "<group>"; };
+		59E2364D297A366D00B7E8A5 /* profile.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = profile.html; sourceTree = "<group>"; };
+		59EE6E072967B95300C01336 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
+		59EE6E082967BBD000C01336 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		59EE6E092967C34700C01336 /* config.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = config.py; sourceTree = "<group>"; };
+		59FB2636297230D9000A82F0 /* app.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = app.py; sourceTree = "<group>"; };
+		59FB26372972328E000A82F0 /* .flaskenv */ = {isa = PBXFileReference; lastKnownFileType = text; path = .flaskenv; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		5902E684296B9FC6006C5BB4 /* templates */ = {
+			isa = PBXGroup;
+			children = (
+				59D225B42980CC3A00842421 /* newUser.html */,
+				591CB40F298CA7F90004B3F8 /* signIn.html */,
+				59EE6E082967BBD000C01336 /* index.html */,
+				59E2364D297A366D00B7E8A5 /* profile.html */,
+			);
+			path = templates;
+			sourceTree = "<group>";
+		};
+		59D03E8F2995E7CC005878DD /* static */ = {
+			isa = PBXGroup;
+			children = (
+				59D03E902995E7DC005878DD /* style.css */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		59EE6E002967B92100C01336 = {
+			isa = PBXGroup;
+			children = (
+				59D03E8F2995E7CC005878DD /* static */,
+				59EE6E072967B95300C01336 /* main.py */,
+				59FB26372972328E000A82F0 /* .flaskenv */,
+				59BED580299F19F6003F4488 /* .gitignore */,
+				59EE6E092967C34700C01336 /* config.py */,
+				59FB2636297230D9000A82F0 /* app.py */,
+				5902E684296B9FC6006C5BB4 /* templates */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		59EE6E012967B92100C01336 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1420;
+			};
+			buildConfigurationList = 59EE6E042967B92100C01336 /* Build configuration list for PBXProject "First Flask Database Project ." */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 59EE6E002967B92100C01336;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		59EE6E052967B92100C01336 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		59EE6E062967B92100C01336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59EE6E042967B92100C01336 /* Build configuration list for PBXProject "First Flask Database Project ." */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59EE6E052967B92100C01336 /* Debug */,
+				59EE6E062967B92100C01336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 59EE6E012967B92100C01336 /* Project object */;
+}

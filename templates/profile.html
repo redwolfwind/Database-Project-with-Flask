@@ -1,0 +1,24 @@
+<head>
+    
+</head>
+
+<body>
+    <h1> Profile Noice</h1>
+    <h3> Name: {{info["name"]}}</h3>
+    <h3>Age: {{info["age"]}}</h3>
+    {%if currentId == info["id"]%}
+        <form action = "/deleteUser" method = "post">
+            
+            <input name = "id" type = "hidden" value = '{{info["id"]}}'/>
+            <input value = "Delete your Account" type = "submit"/>
+            
+        </form>
+        <form action = "/updateUser/{{info['id']}}" method = "post">
+            <input name = "name" type = "text" value = '{{info["name"]}}'/>
+            <input name = "age" type = "number" value = '{{info["age"]}}'/>
+            <input value = "Update User" type = "submit"/>
+            
+        </form>
+    {%endif%}
+</body>
+
