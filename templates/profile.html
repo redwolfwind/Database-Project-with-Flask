@@ -1,24 +1,79 @@
 <head>
-    
+    <!-- Bootstrap core CSS -->
+
+        <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel = "stylesheet" href = "{{url_for('static',filename = 'style.css')}}">
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+        <link href="https://getbootstrap.com/docs/3.4/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+
+
+        <!-- Custom styles for this template -->
+
+        <link href="https://getbootstrap.com/docs/3.4/examples/jumbotron/jumbotron.css" rel="stylesheet">
+
+
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+
+        <!--[if lt IE 9]><script src="https://getbootstrap.com/docs/3.4/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <script src="https://getbootstrap.com/docs/3.4/assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 
 <body>
-    <h1> Profile Noice</h1>
-    <h3> Name: {{info["name"]}}</h3>
-    <h3>Age: {{info["age"]}}</h3>
+    <h1> Profile Page</h1>
+    
+       <div class =  "container">
+            <div class = "row">
+                <div class = "col-xs-3">
+                        <img class = "image"src = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"/>
+                        
+                </div>
+                <div class = "col-md-6">
+                    <h3> Name: {{info["name"]}}</h3>
+                    <h3>Age: {{info["age"]}}</h3>
+                        
+                </div>
+            </div>
+        </div>
+       
+       
+    
     {%if currentId == info["id"]%}
-        <form action = "/deleteUser" method = "post">
-            
-            <input name = "id" type = "hidden" value = '{{info["id"]}}'/>
-            <input value = "Delete your Account" type = "submit"/>
-            
-        </form>
         <form action = "/updateUser/{{info['id']}}" method = "post">
-            <input name = "name" type = "text" value = '{{info["name"]}}'/>
-            <input name = "age" type = "number" value = '{{info["age"]}}'/>
-            <input value = "Update User" type = "submit"/>
+            <div class =  "container">
+                <div class = "row">
+                    <div class = "col-xs-3">
+                        <input name = "name" type = "text" value = '{{info["name"]}}'/>
+                        <input name = "age" type = "number" value = '{{info["age"]}}'/>
+                        <input name = "pass" type = "text" value = '{{info["password"]}}'/>
+                        <input value = "Update User" type = "submit"/>
+                    </div>
+                    
+         
+                </div>
+            </div>
+          
             
         </form>
     {%endif%}
+    {%if currentId == info["id"]%}
+        <form action = "/deleteUser" method = "post">
+            <div class =  "container">
+                <div class = "row">
+                    <div class = "col-xs-3">
+                        <input name = "id" type = "hidden" value = '{{info["id"]}}'/>
+                        <input value = "Delete your Account" type = "submit"/>
+                    </div>
+                    
+         
+                </div>
+            </div>
+        </form>
+ {%endif%}
 </body>
 
