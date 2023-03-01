@@ -11,8 +11,23 @@
         <div>
             <label>Enter your Age: </label><input required name = "Age"/>
         </div>
+        <div>
+            <label>Password: </label><input required name = "pass"/>
+        </div>
+        <div>
+            <label> Check Password: </label><input required name = "passcheck"/>
+        </div>
         
         <div>
+            {%if err == 1%}
+                <div class = "red" >
+                    <h1>
+                        Passwords don't match!
+                    </h1>
+                    
+                </div>
+            
+            {%endif%}
             <input type = "submit"/>
         </div>
     </form>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request,redirect,url_for,make_response, session
 from flask_bootstrap import Bootstrap
+
 # from config import config
 #from flask_sqlalchemy import SQLAlchemy
 import os
@@ -9,8 +10,9 @@ currentUserId = None
 load_dotenv()
 currentId = "-1"
 
+err = 0
+error = 0
 url = os.environ.get("DATABASE_URL")
-
 def createApp():
     global app
     app = Flask(__name__)
@@ -31,7 +33,7 @@ def profileInfo(id):
                 cursor.execute(userId)
                 
                 data = cursor.fetchall()
-    info = {"id": data[0][0], "name": data[0][1],"age": data[0][2]}
+    info = {"id": data[0][0], "name": data[0][1],"age": data[0][2],"password": data[0][3]}
     return info
 @app.route("/profile/<id>", methods = ["POST","GET"])
 def profile(id):
@@ -42,7 +44,7 @@ def profile(id):
             cursor.execute(userId)
             print(request.cookies.get("id") == None)
             data = cursor.fetchall()
-            info = {"id": data[0][0], "name": data[0][1],"age": data[0][2]}
+            info = {"id": data[0][0], "name": data[0][1],"age": data[0][2], "password": data[0][3]}
             if request.cookies.get("id") == None:
                 response = make_response(render_template("profile.html",info = info,currentId = -1))
                 response.set_cookie("id","-1")
@@ -97,36 +99,80 @@ def deleteUser():
 
 @app.route("/newUser", methods = ["POST","GET"])
 def newUser():
-    global currentId
+    global currentId,err
     if request.method == "POST":
         age = request.form["Age"]
         name = request.form["Username"]
-        new = """INSERT INTO users (name,age) VALUES (%s,%s) RETURNING id; """
-        #try:
+        password = request.form["pass"]
+        passwordcheck = request.form["passcheck"]
+        AllUser = """SELECT * FROM users """
         with connection:
             with connection.cursor() as cursor:
-                cursor.execute(new,(name,int(age)))
-    return redirect(url_for("home"))
+                cursor.execute(AllUser)
+                users = cursor.fetchall()
+#        for user in users:
+#            if name == user
+        
+        if password == passwordcheck:
+            new = """INSERT INTO users (name,age,password) VALUES (%s,%s,%s) RETURNING id; """
+            with connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(new,(name,int(age),password))
+            return redirect(url_for("home"))
+        else:
+            
+            err = 1
+            
+        return render_template("newUser.html", err = err)
+    
+   
+    
+    
 @app.route("/signIn", methods = ["POST","GET"])
 def signIn():
     if request.method == "POST":
         name = request.form["Username"]
+        password = request.form["Pass"]
+        passwo = """SELECT * FROM users WHERE password = %s"""
+        with connection:
+            with connection.cursor() as cursor:
+                cursor.execute(passwo,(password,))
+                dat = cursor.fetchall()
+                
+                
+        try:
+            if name == data[0][1]:
+                form = request.form
+                response = make_response(redirect(url_for("home")))
+                response.set_cookie("pass",str(data[0][3]))
+                print("work")
+                return response
+        except:
+                   err = 2
+                    
+    
         username = """SELECT * FROM users WHERE name = %s"""
         with connection:
             with connection.cursor() as cursor:
                 cursor.execute(username,(name,))
                 data = cursor.fetchall()
+                print(data)
         
-        form = request.form
-        response = make_response(redirect(url_for("home")))
-        response.set_cookie("id",str(data[0][0]))
-        
-        
-        
-        
-        
-        return response
-    
+#        if data[0][1] == name:
+#            print("work")
+#            return redirect(url_for("signIn"))
+#        else:
+            try:
+                if dat[0][3] == data[0][3]:
+                    form = request.form
+                    response = make_response(redirect(url_for("home")))
+                    response.set_cookie("id",str(data[0][0]))
+                    print("work")
+                    return response
+            except:
+                error = 2
+            
+            return render_template("signIn.html", error = error)
     
     
     return render_template("signIn.html")

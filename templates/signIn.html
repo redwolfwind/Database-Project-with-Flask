@@ -9,12 +9,30 @@
         <div>
             <label>Enter your Name: </label><input required name = "Username" />
         </div>
+        <div>
+            <label>Enter your Password: </label><input required name = "Pass" />
+        </div>
         
         <div>
             <input type = "submit"/>
         </div>
     </form>
-        
+    {%if error == 1%}
+        <div class = "red" >
+                Account Isn't correct
+            
+            
+        </div>
+    
+    {%endif%}
+    {%if error == 2%}
+        <div class = "red" >
+            Account Isn't correct
+            
+            
+        </div>
+    
+    {%endif%}
     <br/>
     <a href = "/newUserPage"> Don't have an account? Sign Up! </a>
 </body>
